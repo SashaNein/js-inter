@@ -35,6 +35,12 @@ function createBookCard(book) {
 	const readBtn = document.createElement('button');
 	const removeBtn = document.createElement('button');
 
+removeBtn.addEventListener("click", () => {
+	   bookCard.parentNode.removeChild(bookCard);
+
+
+})
+
 	title.textContent = book.title;
 	author.textContent = book.author;
 	pages.textContent = book.pages;
@@ -55,13 +61,15 @@ function createBookCard(book) {
   buttonGroup.appendChild(removeBtn);
 }
 
+
+
 function addBookToLibrary(book) {
 	myLibrary.push(book);
 	bookTitle.value = '';
 	bookAuthor.value = '';
 	bookPages.value = '';
 	readStatus.checked = false;
-	/new line/
+
   	console.log(myLibrary);
   	dialog.close();
   	
