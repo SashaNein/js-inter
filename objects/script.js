@@ -61,6 +61,7 @@ function addBookToLibrary(book) {
 	bookAuthor.value = '';
 	bookPages.value = '';
 	readStatus.checked = false;
+	/new line/
   	console.log(myLibrary);
   	dialog.close();
   	
