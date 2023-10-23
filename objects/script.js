@@ -6,6 +6,7 @@ const myLibrary = [];
 const bookTitle = document.getElementById("title")
 const bookAuthor = document.getElementById("author")
 const bookPages = document.getElementById("pages")
+const readStatus = document.getElementById('isRead')
 const libraryCards = document.getElementById('Library');
 newBook.addEventListener("click", () => {
   dialog.showModal();
@@ -37,12 +38,21 @@ function createBookCard(book) {
 	title.textContent = book.title;
 	author.textContent = book.author;
 	pages.textContent = book.pages;
+	removeBtn.textContent = 'Remove book'
+	if (book.read) {
+		readBtn.textContent = 'Read'
+	} else {
+		readBtn.textContent = 'Unread'
+	}
 
-	
+
 	libraryCards.appendChild(bookCard);
 	bookCard.appendChild(title);
-  	bookCard.appendChild(author);
+  bookCard.appendChild(author);
  	bookCard.appendChild(pages);
+ 	bookCard.appendChild(buttonGroup);
+ 	 buttonGroup.appendChild(readBtn);
+  buttonGroup.appendChild(removeBtn);
 }
 
 function addBookToLibrary(book) {
@@ -50,6 +60,7 @@ function addBookToLibrary(book) {
 	bookTitle.value = '';
 	bookAuthor.value = '';
 	bookPages.value = '';
+	readStatus.checked = false;
   	console.log(myLibrary);
   	dialog.close();
   	
@@ -60,6 +71,7 @@ function createBook(title, author, pages, read) {
 	this.title = bookTitle.value
 	this.author =  bookAuthor.value
 	this.pages = bookPages.value
+	this.read = readStatus.checked
 	this.info = function() {
 		console.log(`${this.title} written by ${this.author}, ${this.pages} pages, ${read}`)
 	}
