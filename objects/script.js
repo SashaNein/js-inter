@@ -8,6 +8,7 @@ const bookAuthor = document.getElementById("author")
 const bookPages = document.getElementById("pages")
 const readStatus = document.getElementById('isRead')
 const libraryCards = document.getElementById('Library');
+
 newBook.addEventListener("click", () => {
   dialog.showModal();
 });
@@ -39,6 +40,11 @@ removeBtn.addEventListener("click", () => {
 	   bookCard.parentNode.removeChild(bookCard);
 
 
+})
+readBtn.addEventListener("click", () => {
+	book.read = !book.read;
+	book.read ? readBtn.textContent = "Read" : readBtn.textContent = "Unread";
+	console.log(book.read);
 })
 
 	title.textContent = book.title;
@@ -86,4 +92,5 @@ function createBook(title, author, pages, read) {
 	}
 
 }
+
 
